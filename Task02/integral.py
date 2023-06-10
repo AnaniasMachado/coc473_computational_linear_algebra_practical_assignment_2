@@ -169,10 +169,13 @@ if __name__ == "__main__":
         val = (x ** 4) * (5.0 ** 4)
         return 4 * (np.pi ** 3) * (3.0 ** 2) * np.exp(-16 * (np.pi) ** 3 / val) / (x * val)
 
+    def S_sigma_2(x):
+        return S_eta(x) * Rao(x)**2
+    
     # Solve m_0 integration
     print(f"Solving Exercise 7 for m_0:\n")
 
-    solver_m0 = Integrator(F = S_eta, a = 0.1, b = 10)
+    solver_m0 = Integrator(F = S_sigma_2, a = 0.1, b = 10)
     result_m0_1 = solver_m0.adaptative_integration()
     result_m0_2 = solver_m0.gauss_legendre_quad()
     print(f"\nFor comparison:\nSelf-adaptative integration result: {result_m0_1}")
@@ -181,7 +184,7 @@ if __name__ == "__main__":
     # Solve m_2 integration
     print(f"Solving Exercise 7 for m_2:\n")
 
-    solver_m2 = Integrator(F = lambda x: (x ** 2) * S_eta(x), a = 0.1, b = 10)
+    solver_m2 = Integrator(F = lambda x: (x ** 2) * S_sigma_2(x), a = 0.1, b = 10)
     result_m2_1 = solver_m2.adaptative_integration()
     result_m2_2 = solver_m2.gauss_legendre_quad()
     print(f"\nFor comparison:\nSelf-adaptative integration result: {result_m2_1}")
