@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.constants import g as acceleration_gravity
+from scipy.constants import g as gravity_acceleration
 
 class DiffEquationSolver:
     def __init__(self, F, t0, y0, dy0):
@@ -130,10 +130,8 @@ if __name__ == "__main__":
     # Differential equation F(t) = y''(t) = f(t, y(t), y'(t))
     def F(t, y, dy):
         kd = 1
-        G = (-1) * acceleration_gravity - kd * dy * np.abs(dy)
+        G = (-1) * gravity_acceleration - kd * dy * np.abs(dy)
         return G
-
-    print(acceleration_gravity)
 
     # Initial conditions
     t0 = 0
