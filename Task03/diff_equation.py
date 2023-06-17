@@ -101,6 +101,8 @@ if __name__ == "__main__":
 
     solver = DiffEquationSolver(F, t0, y0, dy0)
 
+    print("Solving Exercise 4:")
+
     # Taylor's method
     solution_taylor, iter_taylor, points_taylor = solver.taylor(h, T)
     print(f"\nSolution using Taylor's method: {solution_taylor}")
@@ -143,6 +145,10 @@ if __name__ == "__main__":
     T = 20
 
     solver = DiffEquationSolver(F, t0, y0, dy0)
+
+    print("------------------------------")
+
+    print("Solving Exercise 5:")
 
     # Taylor's method
     solution_taylor, iter_taylor, points_taylor = solver.taylor(h, T)
